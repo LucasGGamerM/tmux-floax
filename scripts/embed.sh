@@ -16,8 +16,8 @@ embed() {
     tmux detach-client
 }
 
-pop() {
-    tmux movew -t "$FLOAX_SESSION_NAME"
+tpop() {
+    tmux movew -t "$FLOAX_SESSION_NAME:"
     tmux_popup
 }
 
@@ -27,7 +27,7 @@ case "$action" in
         embed
         ;;
     pop)
-        pop
+        tpop
         ;;
 esac
 
