@@ -5,6 +5,7 @@ source "$CURRENT_DIR/utils.sh"
 
 embed() {
     unset_bindings
+    ORIGIN_SESSION="$(envvar_value ORIGIN_SESSION)"
     number_of_windows=$(tmux list-windows -t "$FLOAX_SESSION_NAME" | wc -l)
     if [ "$number_of_windows" -eq 1 ]; then
         # there's only one window, need to create an alternative
@@ -12,7 +13,7 @@ embed() {
         # otherwise the session dies and popping back won't work
         tmux neww -d
     fi
-    tmux movew -t "$ORIGIN_SESSION"
+    tmux movew -t "$ORIGIN_SESSION:"
     tmux detach-client
 }
 
